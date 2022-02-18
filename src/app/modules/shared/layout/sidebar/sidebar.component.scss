@@ -1,0 +1,17 @@
+.list-group {
+    border-radius: 0;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.list-group-item.inactive {
+    z-index: 2;
+    color: #000000;
+    background-color: #fff;
+    border-color: #fff;
+}

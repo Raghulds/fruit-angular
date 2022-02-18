@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="d-flex flex-row">
+        <div *ngIf="(fruits | json) != '{}'" class="fruits w50">
+            <div class="container-fluid mt-3">
+                <span id="head">
+                    Available Fruits
+                </span>
+            </div>
+            <ul class="list-group mt-3">
+                <li class="list-group-item" *ngFor="let fruit of objectKeys(fruits)" (click)="viewFruit(fruit)">
+                    {{fruit}}
+
+                    <span class="floatRight">
+                        Price: {{fruits[fruit]['price']}}
+                    </span>
+                    <span class="floatRight pr-4">
+                        Availablity: {{fruits[fruit]['quantity']}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="cart w50">
+            <div class="container-fluid mt-3">
+                <div class="container">
+                    <span id="head">
+                        Cart
+                    </span>
+                </div>
+                <div class="container">
+                    <div class="p-2 row">
+                        <div class="col p-0">
+                            <div class="d-flex w100">
+                                <div class="d-flex flex-row pb-2 w50">
+                                    <select [(ngModel)]="selectedFruit" class="form-select" (change)="fruitChange($event)">
+                                        <option value="" disabled selected>Select a fruit</option>
+                                        <option [attr.disabled]="(fruits[fruit][quantity] < 1) ? true : null" *ngFor="let fruit of objectKeys(fruits)" [value]="fruit">{{
+                                            fruit }}</option>
+                                    </select>
+                                    <button class="btn btn-primary margin-horizontal-20" (click)="incrementCount()">+</button>
+                                    <button class="btn btn-primary margin-horizontal-20" (click)="decrementCount()">-</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" (click)="purchaseFruits()" class="btn btn-primary float-right">Purchase</button>
+                </div>
+    
+                <div class="container">
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item" *ngFor="let fruit of objectKeys(cart)">
+                            {{fruit}}
+    
+                            <span class="floatRight">
+                                In cart: {{cart[fruit]}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="(fruits | json) == '{}'" class="fruits w50">
+            <div class="form-text mt-3">
+                No fruits available.
+            </div>
+        </div>
+    </div>
+</div>

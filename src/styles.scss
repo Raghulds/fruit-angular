@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+.w50 {
+    width: 50%;
+}
+
+.validationErrorMsg {
+    color: #df4e4e !important;
+}
+
+.list-group {
+    height: 400px;
+    overflow-y: auto;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
